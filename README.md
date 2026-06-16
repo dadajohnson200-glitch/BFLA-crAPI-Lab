@@ -10,13 +10,16 @@ Technical Walkthrough & Exploitation Lifecycle
 
 1. Frontend & Resource Mapping
 The assessment began on the user dashboard interface, where standard accounts can upload and manage personal video clips attached to their vehicle profiles.
+
 <img width="732" height="392" alt="Screenshot 2026-06-16 040053" src="https://github.com/user-attachments/assets/95707dd0-af15-4029-850e-a917e86a3e8d" />
 
 By interacting with the video player component on the frontend, I generated baseline application traffic to isolate the backend endpoints responsible for handling asset delivery.
 
 2.  Endpoint Analysis
 Using Burp Suite Proxy, I audited the chronological HTTP history to trace the exact microservice routing strings used by the web application.
+
 <img width="803" height="387" alt="Screenshot 2026-06-16 040218" src="https://github.com/user-attachments/assets/0b179d54-5935-40f9-8175-8055d45f7548" />
+
 Out of the active stream of traffic, I isolated a stable REST endpoint tracking video resources by object IDs under the identity service layer:
 
 GET /identity/api/v2/user/videos/103 HTTP/1.1
